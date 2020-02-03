@@ -37,10 +37,10 @@
 				<field name="name"/>
 				<field name="phone"/>
 				<field name="credit"/>
-				<field name="first_unpaid_invoice"/>
-				<field name="last_sale_date"/>
-				<field name="avg_sales_amount"/>
-				<field name="sales_frequency"/>
+				<field name="stored_first_unpaid_invoice"/>
+				<field name="stored_last_sale_date"/>
+				<field name="stored_avg_sales_amount"/>
+				<field name="stored_sales_frequency"/>
 			</tree>
 		</field>
 	</record>
