@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="account_invoice_tree_calculated_discount" model="ir.ui.view">
+                <field name="name">account.invoice.tree.calculated_discount</field>
+                <field name="inherit_id" ref="account.invoice_tree"></field>
+                <field name="model">account.invoice</field>
+                <field name="arch" type="xml">
+                        <field name="state" position="after">
+                                <field name="computed_discount" readonly="1"/>
+                        </field>
+                </field>
+        </record>
+
+	<record id="customer_balance_tree" model="ir.ui.view">
+		<field name="name">Saldos Clientes</field>
+		<field name="model">res.partner</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+				<field name="phone"/>
+				<field name="credit"/>
+				<field name="first_unpaid_invoice"/>
+				<field name="last_sale_date"/>
+				<field name="avg_sales_amount"/>
+				<field name="sales_frequency"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="customer_rfm_tree" model="ir.ui.view">
+		<field name="name">Clientes RFM</field>
+		<field name="model">res.partner</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+				<field name="phone"/>
+				<field name="credit"/>
+				<field name="first_unpaid_invoice"/>
+				<field name="last_sale_date"/>
+				<field name="avg_sales_amount"/>
+				<field name="sales_frequency"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- act_window id="action_customer_balances"
+		name="Saldos Clientes"
+		res_model="res.partner"
+		view_mode="tree,form"
+                view_id="customer_balance_tree"
+		target="current"
+		domain="[('customer','=',True),('parent_id','=',None),('credit','>',0)]"
+		 / -->
+
+	<act_window id="action_customer_rfm"
+		name="Clientes RFM"
+		res_model="res.partner"
+		view_mode="tree,form"
+                view_id="customer_rfm_tree"
+		target="current"
+		domain="[('customer','=',True),('parent_id','=',None)]"
+		 />
+
+	<!-- menuitem id="customer_balances_menu"
+		name="Saldos Clientes"
+		parent="account.menu_finance_receivables"
+		sequence="100"
+		action="action_customer_balances" / -->
+
+	<menuitem id="customer_rfm_menu"
+		name="Clientes RFM"
+		parent="sale.sale_order_menu"
+		sequence="100"
+		action="action_customer_rfm" />
+
+    </data>
+</openerp>
